@@ -79,9 +79,7 @@ app.use(bodyParser.json());
 				var geometrystring = "st_geomfromtext('POINT(" + req.body.longitude + " " + req.body.latitude + ")'";
 				
 				var querystring = "INSERT into questionform (name,question,possibleanswer1,possibleanswer2,possibleanswer3, possibleanswer4,rightanswer,geom) values ('";
-				querystring = querystring + req.body.name + "','" + req.body.question + "','" 
-				+ req.body.possibleanswer1 + "','"+ req.body.possibleanswer2 + "','"+ req.body.possibleanswer3 + "','"+ req.body.possibleanswer4 + "','"
-				+ req.body.rightanswer + "','";
+				querystring = querystring + req.body.name + "','" + req.body.question;
 				console.log(querystring);
 				client.query( querystring,function(err,result) {
 					done();

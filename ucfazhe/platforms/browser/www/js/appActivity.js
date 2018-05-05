@@ -33,15 +33,9 @@ function startDataUpload() {
 	alert ("start data upload");
 	var name = document.getElementById("name").value;
 	var question = document.getElementById("question").value;
-	var possibleanswer1 = document.getElementById("possibleanswer1").value;
-	var possiblenswer2 = document.getElementById("possibleanswer2").value;
-	var possibleanswer3 = document.getElementById("possibleanswer3").value;
-	var possibleanswer4 = document.getElementById("possibleanswer4").value;
-	var rightanswer = document.getElementById("rightanswer").value;
-	alert(name + " "+ question + " "+possibleAnswer1);
+	alert(name + " "+ question);
 
-	var postString = "name="+name +"&question="+question+"&possibleanswer1="+possibleanswer1+"&possibleanswer2="+possibleanswer2+"&possibleanswer3="
-	+possibleanswer3+"&possibleanswer4="+possibleanswer4+"&rightanswer="+rightanswer;
+	var postString = "name="+name +"&question="+question;
 
 
 
