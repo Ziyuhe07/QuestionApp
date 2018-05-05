@@ -15,105 +15,7 @@ function replaceGraphs() {
 		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' + '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>,' + 'Imagery © <a href="http://mapbox.com">Mapbox</a>',
 		id: 'mapbox.streets'
 	}).addTo(mymap);
-	var clientA;
-	// and a variable that will hold the layer itself – we need to do this outside the function so that we can use it to remove the layer later on
-	var formDatalayer;
-//getPOI -view data as GeoJSON
-	function showFormData() {
-		clientA = new XMLHttpRequest();
-		clientA.open('GET','http://developer.cege.ucl.ac.uk:30271/getGeoJSON/formdata/geom');
-		clientA.onreadystatechange = showFormDataResponse; // note don't use earthquakeResponse() with brackets as that doesn't work
-		clientA.send();
-	}
-	// create the code to wait for the response from the data server, and process the response once it is received
-	function showFormDataResponse() {
-		// this function listens out for the server to say that the data is ready - i.e. has state 4
-	if (clientA.readyState == 4) {
-	// once the data is ready, process the data
-	var formData = clientA.responseText;
-	loadFormDatalayer(formData);
-	}
-	}
-	// convert the received data - which is text - to JSON format and add it to the map
-	function loadFormDatalayer(formData) {
-	// convert the text to JSON
-	var formDatajson = JSON.parse(formData);
-	// add the JSON layer onto the map - it will appear using the default icons
-	formDatalayer = L.geoJson(formDatajson).addTo(mymap);
-	// change the map zoom so that all the data is shown
-	mymap.fitBounds(formDatalayer.getBounds());
-	}
-	var clientB;
-	// and a variable that will hold the layer itself – we need to do this outside the function so that we can use it to remove the layer later on
-	var earthquakelayer;
-	// create the code to get the Earthquakes data using an XMLHttpRequest
-	function getEarthquakes() {
-		clientB = new XMLHttpRequest();
-		clientB.open('GET','https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.geojson');
-		clientB.onreadystatechange = earthquakeResponse; // note don't use earthquakeResponse() with brackets as that doesn't work
-		clientB.send();
-	}
-	// create the code to wait for the response from the data server, and process the response once it is received
-	function earthquakeResponse() {
-	// this function listens out for the server to say that the data is ready - i.e. has state 4
-	if (clientB.readyState == 4) {
-	// once the data is ready, process the data
-	var earthquakedata = clientB.responseText;
-	loadEarthquakelayer(earthquakedata);
-	}
-	}
-	// convert the received data - which is text - to JSON format and add it to the map
-	function loadEarthquakelayer(earthquakedata) {
-	// convert the text to JSON
-	var earthquakejson = JSON.parse(earthquakedata);
-	// add the JSON layer onto the map - it will appear using the default icons
-	earthquakelayer = L.geoJson(earthquakejson).addTo(mymap);
-	// change the map zoom so that all the data is shown
-	mymap.fitBounds(earthquakelayer.getBounds());
-	}
-
-
-//Track location function
-	function trackLocation() {
-	if (navigator.geolocation) {
-	navigator.geolocation.watchPosition(showPosition);
-	} else {
-	document.getElementById('showLocation').innerHTML = "Geolocation is not supported by this browser.";
-	}
-	}
-
-	function showPosition(position) {
-	// draw a point on the map
-	L.marker([position.coords.latitude, position.coords.longitude]).addTo(mymap)
-		.bindPopup("<b>You were at "+ position.coords.longitude + " "+position.coords.latitude+"!</b>");
-	mymap.setView([position.coords.latitude, position.coords.longitude], 13);
-}
-
-var xhr; // define the global variable to process the AJAX request
-function callDivChange() {
-xhr = new XMLHttpRequest();
-xhr.open("GET", "test.html", true);
-xhr.onreadystatechange = processDivChange;
-//try {
-//xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-//}
-//catch (e) {
-// this only works in internet explorer
-//}
-xhr.send();
-}
-function processDivChange() {
-if (xhr.readyState < 4) {}// while waiting response from server
-//document.getElementById('div1').innerHTML = "Loading...";
-else {
-	if (xhr.readyState === 4) {// 4 = Response from server has been completely loaded.
-//if (xhr.status == 200 && xhr.status < 300)
-// http status between 200 to 299 are all successful
-		document.getElementById('div1').innerHTML = xhr.responseText;
-	}
-}
-}
-
+	
 //User click event to allow user click on ponits of map, and then give the lat & lon
 // create a custom popup
 	var popup = L.popup();
@@ -126,5 +28,46 @@ function onMapClick(e) {
 	}
 	// now add the click event detector to the map
 	mymap.on('click', onMapClick);
+	
+function startDataUpload() {
+	alert ("start data upload");
+	var name = document.getElementById("name").value;
+	var question = document.getElementById("question").value;
+	var possibleAnswer1 = document.getElementById("possibleAnswer1").value;
+	var possibleAnswer2 = document.getElementById("possibleAnswer2").value;
+	var possibleAnswer3 = document.getElementById("possibleAnswer3").value;
+	var possibleAnswer4 = document.getElementById("possibleAnswer4").value;
+	var rightAnswer = document.getElementById("rightAnswer").value;
+	alert(name + " "+ question + " "+possibleAnswer1);
+
+	var postString = "name="+name +"&question="+question+"&possibleAnswer1="+possibleAnswer1+"&possibleAnswer2="+possibleAnswer2+"&possibleAnswer3="
+	+possibleAnswer3+"&possibleAnswer4="+possibleAnswer4+"&rightAnswer="+rightAnswer;
+
+
+
+// now get the geometry values
+	var latitude = document.getElementById("latitude").value;
+	var longitude = document.getElementById("longitude").value;
+	postString = postString + "&latitude=" + latitude + "&longitude=" + longitude;
+	
+}
+var client;
+function processData(postString) {
+	client = new XMLHttpRequest();
+	client.open('POST','http://developer.cege.ucl.ac.uk:30271/uploadData',true);
+	client.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	client.onreadystatechange = dataUploaded;
+	client.send(postString);
+	}
+// create the code to wait for the response from the data server, and process the response once it is received
+function dataUploaded() {
+// this function listens out for the server to say that the data is ready - i.e. has state 4
+	if (client.readyState == 4) {
+// change the DIV to show the response
+		document.getElementById("dataUploadResult").innerHTML = client.responseText;
+	}
+}
+
+
 
 	
