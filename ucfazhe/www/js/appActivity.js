@@ -33,15 +33,15 @@ function startDataUpload() {
 	alert ("start data upload");
 	var name = document.getElementById("name").value;
 	var question = document.getElementById("question").value;
-	var possibleAnswer1 = document.getElementById("possibleAnswer1").value;
-	var possibleAnswer2 = document.getElementById("possibleAnswer2").value;
-	var possibleAnswer3 = document.getElementById("possibleAnswer3").value;
-	var possibleAnswer4 = document.getElementById("possibleAnswer4").value;
-	var rightAnswer = document.getElementById("rightAnswer").value;
+	var possibleanswer1 = document.getElementById("possibleanswer1").value;
+	var possiblenswer2 = document.getElementById("possibleanswer2").value;
+	var possibleanswer3 = document.getElementById("possibleanswer3").value;
+	var possibleanswer4 = document.getElementById("possibleanswer4").value;
+	var rightanswer = document.getElementById("rightanswer").value;
 	alert(name + " "+ question + " "+possibleAnswer1);
 
-	var postString = "name="+name +"&question="+question+"&possibleAnswer1="+possibleAnswer1+"&possibleAnswer2="+possibleAnswer2+"&possibleAnswer3="
-	+possibleAnswer3+"&possibleAnswer4="+possibleAnswer4+"&rightAnswer="+rightAnswer;
+	var postString = "name="+name +"&question="+question+"&possibleanswer1="+possibleanswer1+"&possibleanswer2="+possibleanswer2+"&possibleanswer3="
+	+possibleanswer3+"&possibleanswer4="+possibleanswer4+"&rightanswer="+rightanswer;
 
 
 
