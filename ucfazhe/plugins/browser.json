@@ -1,0 +1,52 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "insertForm"
+    },
+    "cordova-plugin-battery-status": {
+      "PACKAGE_NAME": "insertForm"
+    },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "insertForm"
+    },
+    "cordova-plugin-media-capture": {
+      "PACKAGE_NAME": "insertForm"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "insertForm"
+    },
+    "cordova-plugin-dialogs": {
+      "PACKAGE_NAME": "insertForm"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "insertForm"
+    },
+    "cordova-plugin-globalization": {
+      "PACKAGE_NAME": "insertForm"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "insertForm"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "insertForm"
+    },
+    "cordova-plugin-vibration": {
+      "PACKAGE_NAME": "insertForm"
+    }
+  },
+  "dependent_plugins": {
+    "cordova-plugin-compat": {
+      "PACKAGE_NAME": "insertForm"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "insertForm"
+    }
+  }
+}
