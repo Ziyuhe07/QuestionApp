@@ -78,7 +78,7 @@ app.use(bodyParser.json());
 				// well known text should look like: 'POINT(-71.064544 42.28787)'
 				var geometrystring = "st_geomfromtext('POINT(" + req.body.longitude + " " + req.body.latitude + ")'";
 				
-				var querystring = "INSERT into questionform (name,question,possibleanswer1,possibleanswer2,possibleanswer3, possibleanswer4,rightanswer,geom) values ('";
+				var querystring = "INSERT into questionform (name,question,geom) values ('";
 				querystring = querystring + req.body.name + "','" + req.body.question;
 				console.log(querystring);
 				client.query( querystring,function(err,result) {
