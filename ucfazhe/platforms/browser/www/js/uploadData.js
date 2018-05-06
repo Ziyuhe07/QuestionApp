@@ -4,6 +4,7 @@ function startDataUpload() {
 	alert ("start data upload");
 	var name = document.getElementById("name").value;
 	var question = document.getElementById("question").value;
+	var possibleAnswer1 = document.getElementById("possibleAnswer1").value;
 	alert(name + " "+ question + " "+possibleAnswer1);
 
 	var postString = "name="+name +"&question="+question;
