@@ -74,6 +74,7 @@
     </style>
   </head>
   <body>
+	 
     <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
       <header class="demo-header mdl-layout__header mdl-color--pink-50 mdl-color-text--grey-600">
         <div class="mdl-layout__header-row">
@@ -110,26 +111,27 @@
         </header>
         <nav class="demo-navigation mdl-navigation mdl-color--pink-100">
 		  
-		  <label for="name">Name*</label><input type="text" size="25" id="name"/><br />
-		  <label for="question">Question*</label><input type="text" size="25" id="question"/><br />
-		  <label for="answera">Answer 1*</label><input type="text" size="25" id="answera"/><br />
-		  <label for="answerb">Answer 2*</label><input type="text" size="25" id="answerb"/><br />
-		  <label for="answerc">Answer 3*</label><input type="text" size="25" id="answerc"/><br />
-		  <label for="answerd">Answer 4*</label><input type="text" size="25" id="answerd"/><br />
-		  <label for="ranswer">The correct Answer*</label><input type="text" size="25" id="ranswer"/><br />
+		  <div style="text-align:center;"><label for="name">Name*</label><input type="text" size="25" id="name"/><br /></div>
+		  <div style="text-align:center;"><label for="question">Question*</label><input type="text" size="25" id="question" align="left"/><br /><div>
+		  <div style="text-align:center;"><label for="answera">Answer 1*</label><input type="text" size="25" id="answera"/><br /><div>
+		  <div style="text-align:center;"><label for="answerb">Answer 2*</label><input type="text" size="25" id="answerb"/><br /><div>
+		  <div style="text-align:center;"><label for="answerc">Answer 3*</label><input type="text" size="25" id="answerc"/><br /><div>
+		  <div style="text-align:center;"><label for="answerd">Answer 4*</label><input type="text" size="25" id="answerd"/><br /><div>
+		  <div style="text-align:center;"><label for="ranswer">The correct Answer*</label><input type="text" size="25" id="ranswer"/><br /><div>
 		  
 		  <div id="dataUploadResult">The result of the upload goes here</div>
-		  <label for="latitude">Latitude*</label><input type="text" size="25" id="latitude"/><br />
-		  <label for="longitude">Longitude*</label><input type="text" size="25" id="longitude"/><br/>
+		  <div style="text-align:center;"><label for="latitude">Latitude*</label><input type="text" size="25" id="latitude"/><br /><div>
+		  <div style="text-align:center;"><label for="longitude">Longitude*</label><input type="text" size="25" id="longitude"/><br/><div>
 		  <p>Click here to upload the data</p>
-		  <button id="startUpload" onclick="startDataUpload()">Start Data Upload</button>
+		  <div style="text-align:center;"><button id="startUpload" onclick="startDataUpload()">Start Data Upload</button><div>
           
 		 <div class="mdl-layout-spacer"></div>
+		 
           
         </nav>
       </div>
       <main class="mdl-layout__content mdl-color--grey-100">
-      <div class="demo-charts mdl-color--white mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid" >
+      <div class="demo-charts mdl-color--lime-50 mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid" >
       <div id="mapid" style="width: 800px; height: 450px;"></div>
 	  <div id='showLocation'></div>
       </div>

@@ -3,29 +3,43 @@
 function startDataUpload() {
 	alert ("start data upload");
 	var name = document.getElementById("name").value;
-	var question = document.getElementById("question").value;
-	var possibleAnswer1 = document.getElementById("possibleAnswer1").value;
-	alert(name + " "+ question + " "+possibleAnswer1);
+	var surname = document.getElementById("surname").value;
+	var module = document.getElementById("module").value;
+	alert(name + " "+ surname + " "+module);
 
-	var postString = "name="+name +"&question="+question;
+	var postString = "name="+name +"&surname="+surname+"&module="+module;
 
-	var possibleAnswer1 = document.getElementById("possibleAnswer1").value;
-	var possibleAnswer2 = document.getElementById("possibleAnswer2").value;
-	var possibleAnswer3 = document.getElementById("possibleAnswer3").value;
-		postString = "&possibleAnswer1="+possibleAnswer1+"&possibleAnswer2="+possibleAnswer2+"&possibleAnswer3="
-	+possibleAnswer3;
-	
-	var possibleAnswer4 = document.getElementById("possibleAnswer4").value;
-	var rightAnswer = document.getElementById("rightAnswer").value;
-	postString = "&possibleAnswer4="+possibleAnswer4+"&rightAnswer="+rightAnswer
+	//get checkbox value
+	var checkString = "";
+	for (var i = 1;i< 5;i++){
+		if (document.getElementById("check"+i).checked === true) {
+			checkString = checkString + document.getElementById("check"+i).value + "||"
+		}
+
+	}
+	// now get the select box values
+	var language = document.getElementById("languageselectbox").value;
+	postString = postString + "&language="+language;
+
 
 // now get the geometry values
 	var latitude = document.getElementById("latitude").value;
 	var longitude = document.getElementById("longitude").value;
 	postString = postString + "&latitude=" + latitude + "&longitude=" + longitude;
 	
-	processData(postString);
+	postString = postString + "&modulelist="+checkString;
+
+// now get the radio button values
+	if (document.getElementById("morning").checked) {
+ 		 postString=postString+"&lecturetime=morning";
+	}
+	if (document.getElementById("afternoon").checked) {
+ 		 postString=postString+"&lecturetime=afternoon";
+	}
+
 	
+	processData(postString);
+
 }
 
 
@@ -45,4 +59,3 @@ function dataUploaded() {
 		document.getElementById("dataUploadResult").innerHTML = client.responseText;
 	}
 }
-

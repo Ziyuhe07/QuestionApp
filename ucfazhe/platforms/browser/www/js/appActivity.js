@@ -33,9 +33,14 @@ function startDataUpload() {
 	alert ("start data upload");
 	var name = document.getElementById("name").value;
 	var question = document.getElementById("question").value;
-	alert(name + " "+ question);
+	var answera = document.getElementById("answera").value;
+	var answerb = document.getElementById("answerb").value;
+	var answerc = document.getElementById("answerc").value;
+	var answerd = document.getElementById("answerd").value;
+	var ranswer = document.getElementById("ranswer").value;
+	alert(name + " "+ question + " "+answera);
 
-	var postString = "name="+name +"&question="+question;
+	var postString = "name="+name +"&question="+question+"&answera="+answera+"&answerb="+answerb+"&answerc="+answerc+"&answerd="+answerd+"&ranswer="+ranswer;
 
 
 
@@ -44,7 +49,11 @@ function startDataUpload() {
 	var longitude = document.getElementById("longitude").value;
 	postString = postString + "&latitude=" + latitude + "&longitude=" + longitude;
 	
+	processData(postString);
+	
 }
+
+
 var client;
 function processData(postString) {
 	client = new XMLHttpRequest();
@@ -62,6 +71,3 @@ function dataUploaded() {
 	}
 }
 
-
-
-	
