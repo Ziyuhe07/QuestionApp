@@ -4,17 +4,19 @@ function startDataUpload() {
 	alert ("start data upload");
 	var name = document.getElementById("name").value;
 	var question = document.getElementById("question").value;
+	alert(name + " "+ question + " "+possibleAnswer1);
+
+	var postString = "name="+name +"&question="+question;
+
 	var possibleAnswer1 = document.getElementById("possibleAnswer1").value;
 	var possibleAnswer2 = document.getElementById("possibleAnswer2").value;
 	var possibleAnswer3 = document.getElementById("possibleAnswer3").value;
+		postString = "&possibleAnswer1="+possibleAnswer1+"&possibleAnswer2="+possibleAnswer2+"&possibleAnswer3="
+	+possibleAnswer3;
+	
 	var possibleAnswer4 = document.getElementById("possibleAnswer4").value;
 	var rightAnswer = document.getElementById("rightAnswer").value;
-	alert(name + " "+ question + " "+possibleAnswer1);
-
-	var postString = "name="+name +"&question="+question+"&possibleAnswer1="+possibleAnswer1+"&possibleAnswer2="+possibleAnswer2+"&possibleAnswer3="
-	+possibleAnswer3+"&possibleAnswer4="+possibleAnswer4+"&rightAnswer="+rightAnswer;
-
-
+	postString = "&possibleAnswer4="+possibleAnswer4+"&rightAnswer="+rightAnswer
 
 // now get the geometry values
 	var latitude = document.getElementById("latitude").value;
