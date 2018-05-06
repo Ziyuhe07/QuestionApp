@@ -21,6 +21,8 @@ function startDataUpload() {
 	var longitude = document.getElementById("longitude").value;
 	postString = postString + "&latitude=" + latitude + "&longitude=" + longitude;
 	
+	processData(postString);
+	
 }
 
 
