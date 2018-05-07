@@ -1,25 +1,16 @@
-
-	
 function startDataUpload() {
 	alert ("start data upload");
 	var name = document.getElementById("name").value;
-	var surname = document.getElementById("surname").value;
-	var module = document.getElementById("module").value;
-	alert(name + " "+ surname + " "+module);
+	var question = document.getElementById("question").value;
+	var answera = document.getElementById("answera").value;
+	var answerb = document.getElementById("answerb").value;
+	var answerc = document.getElementById("answerc").value;
+	var answerd = document.getElementById("answerd").value;
+	var ranswer = document.getElementById("ranswer").value;
+	alert(name + " "+ question + " "+answera);
 
-	var postString = "name="+name +"&surname="+surname+"&module="+module;
+	var postString = "name="+name +"&question="+question+"&answera="+answera+"&answerb="+answerb+"&answerc="+answerc+"&answerd="+answerd+"&ranswer="+ranswer;
 
-	//get checkbox value
-	var checkString = "";
-	for (var i = 1;i< 5;i++){
-		if (document.getElementById("check"+i).checked === true) {
-			checkString = checkString + document.getElementById("check"+i).value + "||"
-		}
-
-	}
-	// now get the select box values
-	var language = document.getElementById("languageselectbox").value;
-	postString = postString + "&language="+language;
 
 
 // now get the geometry values
@@ -27,19 +18,8 @@ function startDataUpload() {
 	var longitude = document.getElementById("longitude").value;
 	postString = postString + "&latitude=" + latitude + "&longitude=" + longitude;
 	
-	postString = postString + "&modulelist="+checkString;
-
-// now get the radio button values
-	if (document.getElementById("morning").checked) {
- 		 postString=postString+"&lecturetime=morning";
-	}
-	if (document.getElementById("afternoon").checked) {
- 		 postString=postString+"&lecturetime=afternoon";
-	}
-
-	
 	processData(postString);
-
+	
 }
 
 
@@ -59,3 +39,4 @@ function dataUploaded() {
 		document.getElementById("dataUploadResult").innerHTML = client.responseText;
 	}
 }
+
