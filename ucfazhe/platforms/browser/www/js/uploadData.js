@@ -6,10 +6,9 @@ function startDataUpload() {
 	var answerb = document.getElementById("answerb").value;
 	var answerc = document.getElementById("answerc").value;
 	var answerd = document.getElementById("answerd").value;
-	var ranswer = document.getElementById("ranswer").value;
 	alert(name + " "+ question + " "+answera);
 
-	var postString = "name="+name +"&question="+question+"&answera="+answera+"&answerb="+answerb+"&answerc="+answerc+"&answerd="+answerd+"&ranswer="+ranswer;
+	var postString = "name="+name +"&question="+question+"&answera="+answera+"&answerb="+answerb+"&answerc="+answerc+"&answerd="+answerd;
 
 
 
@@ -18,10 +17,23 @@ function startDataUpload() {
 	var longitude = document.getElementById("longitude").value;
 	postString = postString + "&latitude=" + latitude + "&longitude=" + longitude;
 	
+	
+	
+
+
+// now get the checkbox values - separate them with a | so that they can be
+// split later on if necessary
+	var checkString = "";
+	for (var i = 1;i< 5;i++){
+	if (document.getElementById("check"+i).checked === true) {
+	checkString = checkString +
+	document.getElementById("check"+i).value + "||"
+	}
+}
+	postString = postString + "&ranswer="+checkString;
 	processData(postString);
 	
 }
-
 
 var client;
 function processData(postString) {
