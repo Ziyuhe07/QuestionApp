@@ -21,16 +21,21 @@ function startDataUpload() {
 	
 
 
-// now get the checkbox values - separate them with a | so that they can be
-// split later on if necessary
-	var checkString = "";
-	for (var i = 1;i< 5;i++){
-	if (document.getElementById("check"+i).checked === true) {
-	checkString = checkString +
-	document.getElementById("check"+i).value + "||"
-	}
-}
-	postString = postString + "&ranswer="+checkString;
+// Use radio to allow user chose the right answer
+
+		if (document.getElementById("answera").checked) {
+			postString=postString+"&ranswer=answera";
+ 		}
+		if (document.getElementById("answerb").checked) {
+ 		 	postString=postString+"&ranswer=answerb";
+		}
+		if (document.getElementById("answerc").checked) {
+ 		 	postString=postString+"&ranswer=answerc";
+		}
+		if (document.getElementById("answerd").checked) {
+ 		 	postString=postString+"&ranswer=answerd";
+		}
+	
 	processData(postString);
 	
 }
